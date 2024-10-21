@@ -23,8 +23,9 @@ namespace ClientChat
     {
         IPEndPoint serverEndPoint;
         UdpClient client ;
-     
-        ObservableCollection<MessageInfo> messages = new ObservableCollection<MessageInfo>();   
+        string nickname;
+        ObservableCollection<MessageInfo> messages = new ObservableCollection<MessageInfo>();
+        NicknameWindow nicknameWindow = new NicknameWindow();
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace ClientChat
             short port = short.Parse(ConfigurationManager.AppSettings["ServerPort"]!);
             serverEndPoint = new IPEndPoint(IPAddress.Parse(address), port);
             LeaveCheck();
+            
         }
       
         private void Leave_Button_Click(object sender, RoutedEventArgs e)
@@ -48,37 +50,42 @@ namespace ClientChat
 
 
         }
-        
-        private void Join_Button_Click(object sender, RoutedEventArgs e)
+
+        private async void Join_Button_Click(object sender, RoutedEventArgs e)
         {
-        
-            string message = "$<join>";
+
+
+
+
+
+            nicknameWindow.ShowDialog();
+            nickname = nicknameWindow.Nickname;
+
+            
+            string message = "$<join>";  
             SendMessage(message);
             Listen();
             JoinCheck();
 
         }
 
+
         private void Send_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (msgTextBox.Text == "")
+            {
+                return;
+            }
+            else
+            {
+                string message = @$"\{nickname}/
+| {msgTextBox.Text}"; 
 
-          
-               
-                if (msgTextBox.Text == "")
-                {
-                    MessageBox.Show("Рядок пустий", "Помилка", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    
-                }
-                else
-                {
-                    string message = msgTextBox.Text;
-                    SendMessage(message);
-                    msgTextBox.Text = "";
-                    
-                }
-           
+                SendMessage(message);
+                msgTextBox.Text = "";
+            }
         }
-       
+
         private void msgTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter) 
@@ -95,6 +102,7 @@ namespace ClientChat
         {
             while (true)
             {
+
                 var data = await client.ReceiveAsync();
                 string message = Encoding.UTF8.GetString(data.Buffer);
                 messages.Add(new MessageInfo(message, DateTime.Now));

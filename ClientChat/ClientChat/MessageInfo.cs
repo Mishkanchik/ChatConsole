@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClientChat
 {
@@ -10,14 +11,21 @@ namespace ClientChat
     {
         public string Text { get; set; }
         public DateTime Time { get; set; }
+       
+        
         public MessageInfo(string text, DateTime time)
         {
             Text = text;    
-            Time = time;    
+            Time = time; 
+            
+
         }
         public override string ToString()
         {
-            return $"{Text}  Date : {Time}";
+           
+            return $"{Text} | \t\t{Time.ToString("HH:mm")}";
+
+
         }
     }
 }
