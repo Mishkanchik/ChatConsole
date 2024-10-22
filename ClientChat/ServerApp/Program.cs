@@ -8,6 +8,7 @@ namespace ServerApp
     {
         const short port = 4040;
         const string JOIN_CMD = "$<join>";
+        const string LEAVE_CMD = "$<Leave>";
         UdpClient server;
         IPEndPoint clientEndPoint = null;
         List<IPEndPoint> members ;
@@ -30,12 +31,21 @@ namespace ServerApp
                 {
                     case JOIN_CMD:
                         AddMember(clientEndPoint);                        
+                        break; 
+                    case LEAVE_CMD:
+                        LeaveMember(clientEndPoint);                        
                         break;                       
                     default:
                         SendToAll(data);
                         break;
                 }
             }
+        }
+
+        private void LeaveMember(IPEndPoint member)
+        {
+            members.Remove(member);
+            Console.WriteLine("Member was added!");
         }
         private void AddMember(IPEndPoint member)
         {

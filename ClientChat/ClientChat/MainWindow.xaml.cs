@@ -36,6 +36,8 @@ namespace ClientChat
             short port = short.Parse(ConfigurationManager.AppSettings["ServerPort"]!);
             serverEndPoint = new IPEndPoint(IPAddress.Parse(address), port);
             LeaveCheck();
+            nicknameWindow.ShowDialog();
+            nickname = nicknameWindow.Nickname;
             
         }
       
@@ -58,8 +60,6 @@ namespace ClientChat
 
 
 
-            nicknameWindow.ShowDialog();
-            nickname = nicknameWindow.Nickname;
 
             
             string message = "$<join>";  
