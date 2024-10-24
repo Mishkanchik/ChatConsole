@@ -115,7 +115,7 @@ namespace ClientChat
                 int caretIndex = msgTextBox.CaretIndex;
 
                 
-                msgTextBox.Text = msgTextBox.Text.Insert(caretIndex, "\n      "); 
+                msgTextBox.Text = msgTextBox.Text.Insert(caretIndex, "\n       "); 
 
                
                 msgTextBox.CaretIndex = caretIndex + 6; 
