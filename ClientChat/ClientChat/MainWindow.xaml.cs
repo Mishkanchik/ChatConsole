@@ -23,7 +23,7 @@ namespace ClientChat
     {
         IPEndPoint serverEndPoint;
         UdpClient client ;
-        string nickname;
+        private string nickname;
         ObservableCollection<MessageInfo> messages = new ObservableCollection<MessageInfo>();
         NicknameWindow nicknameWindow = new NicknameWindow();
         public MainWindow()
@@ -38,30 +38,23 @@ namespace ClientChat
             LeaveCheck();
             nicknameWindow.ShowDialog();
             nickname = nicknameWindow.Nickname;
-            
+            NicknameTextBox.Text = nickname;
+
+
         }
       
         private void Leave_Button_Click(object sender, RoutedEventArgs e)
         {
-           
-           
+
             string message = "$<Leave>";
             SendMessage(message);
             LeaveCheck();
-
-
 
         }
 
         private async void Join_Button_Click(object sender, RoutedEventArgs e)
         {
 
-
-
-
-
-
-            
             string message = "$<join>";  
             SendMessage(message);
             Listen();
@@ -73,26 +66,33 @@ namespace ClientChat
         private void Send_Button_Click(object sender, RoutedEventArgs e)
         {
             if (msgTextBox.Text == "")
-            {
-                return;
-            }
+                return;  
             else
             {
-                string message = @$"\{nickname}/
-| {msgTextBox.Text}"; 
 
-                SendMessage(message);
+                string message = $"|{nickname}|: {msgTextBox.Text}";
+                
+                SendMessage(FormatText(message));
                 msgTextBox.Text = "";
             }
         }
-
-        private void msgTextBox_KeyDown(object sender, KeyEventArgs e)
+        private string FormatText(string text)
         {
-            if (e.Key == Key.Enter) 
+            string trimmedText = text.Trim();
+            StringBuilder formattedText = new StringBuilder(trimmedText);
+
+            int index = 50;
+            while (index < formattedText.Length)
             {
-                Send_Button_Click(sender, e); 
+                formattedText.Insert(index, "\n\n");
+                index += 51;
             }
+
+            return formattedText.ToString();
         }
+
+
+     
         private async void SendMessage(string message)
         {
             byte[] data = Encoding.UTF8.GetBytes(message);
@@ -102,7 +102,6 @@ namespace ClientChat
         {
             while (true)
             {
-
                 var data = await client.ReceiveAsync();
                 string message = Encoding.UTF8.GetString(data.Buffer);
                 messages.Add(new MessageInfo(message, DateTime.Now));

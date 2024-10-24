@@ -24,6 +24,7 @@ namespace ServerApp
 
                 byte[] data = server.Receive(ref clientEndPoint);
                 string message = Encoding.UTF8.GetString(data);
+                
                 Console.WriteLine($"Message : {message} from : {clientEndPoint}. " +
                     $"Date : {DateTime.Now.ToShortTimeString()}");
 

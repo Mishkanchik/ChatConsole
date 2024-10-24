@@ -23,7 +23,7 @@ namespace ClientChat
         public override string ToString()
         {
            
-            return $"{Text} | \t\t{Time.ToString("HH:mm")}";
+            return $"{Text}\t|{Time.ToString("HH:mm")}";
 
 
         }

@@ -1,9 +1,15 @@
 ﻿<Window Background="Black" x:Class="ClientChat.NicknameWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Enter Nickname" Height="150" Width="300">
+        Title="Gorgo NickName" Height="141" Width="201" Icon="/images/g.ico" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
-        <TextBlock DockPanel.Dock="Top" TextAlignment="Center" FontSize="13" Foreground="Bisque"  Margin="0,30,0,0" FontWeight="Bold" RenderTransformOrigin="0.5,0.342">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF080656" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBlock DockPanel.Dock="Top" TextAlignment="Center" FontSize="13" Foreground="#FF06ADCC"  Margin="-1,39,1,-9" FontWeight="Bold" RenderTransformOrigin="0.5,0.342" FontFamily="Cascadia Mono">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -12,8 +18,11 @@
                     <TranslateTransform X="0.384" Y="-0.001"/>
                 </TransformGroup>
             </TextBlock.RenderTransform>Enter your NickName</TextBlock>
-        <TextBox Name="nicknameTextBox" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200"  KeyDown="msgTextBox_KeyDown"/>
-        <Button Background="DarkOrange" BorderBrush="Red" FontWeight="Bold" Name="OKButton" Content="OK" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,20" Width="75" Click="OKButton_Click"/>
+        <TextBox BorderBrush="#FF07112F" Foreground="#FF073248" SelectionTextBrush="#FF180B5B" Name="nicknameTextBox" VerticalAlignment="Center" HorizontalAlignment="Center" Width="160"  KeyDown="msgTextBox_KeyDown" Height="20" TextChanged="nicknameTextBox_TextChanged"/>
+        <Button  Background="#FF122171" Foreground="#FF00A7FF" BorderBrush="#FF00FF79" FontWeight="Bold" Name="OKButton" Content="OK" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,96,0,0" Width="76" Click="OKButton_Click"/>
+        <!--<TextBlock Foreground="#FF0C8B8E" FontSize ="10px" Margin="100,0,0,0"> Desktop shortcut</TextBlock>
+        <Button Background="#FF122171" Foreground="#FF00A7FF" BorderBrush="#FF00FF79" FontSize="5" Content="ОК" Click="CreateShortcutButton_Click" Margin="180,2,3,127"/>-->
+
     </Grid>
 </Window>
 

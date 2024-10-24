@@ -5,26 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientChat"
         mc:Ignorable="d"
-        Title="Gordo" Height="600" Width="1000"
+        Title="Gordo" Height="600" Width="1000" Icon="/images/g.ico" Cursor="" ResizeMode="NoResize" Topmost="False" FontFamily="Bahnschrift SemiBold SemiCondensed"
        
         >
-   
-    <DockPanel>
 
-        <DockPanel Background="DarkOrange"  DockPanel.Dock="Bottom">
-            <Label Margin="5" FontWeight="Bold">Message : </Label>
+    <DockPanel >
 
-            <Button Background="Black" Foreground="DarkOrange" BorderBrush="Red" DockPanel.Dock="Right" Padding="10,5" Margin="5" Name="Leave_Button" Click="Leave_Button_Click">Leave</Button>
-            <Button Background="Black" Foreground="DarkOrange" BorderBrush="Red" DockPanel.Dock="Right" Padding="10,5" Margin="5" Name="Join_Button" Click="Join_Button_Click">Join</Button>
-            <Button Background="Black" Foreground="DarkOrange" BorderBrush="Red" DockPanel.Dock="Right" Padding="10,5" Margin="5" Name="Send_Button" Click="Send_Button_Click">Send</Button>
-            <TextBox Margin="5" VerticalContentAlignment="Center" Name="msgTextBox" KeyDown="msgTextBox_KeyDown" ></TextBox>
+        <DockPanel Background="#FF081086"  DockPanel.Dock="Bottom">
+            <Label Margin="5" FontWeight="Bold" Foreground="#FF06ADCC" FontSize="16">Message :</Label>
+           
+            <Button Background="#FF100548" Foreground="#FF00A7FF" BorderBrush="#FF00FF79" DockPanel.Dock="Right" Padding="10,5" Margin="5" Name="Leave_Button" Click="Leave_Button_Click" Width="60">Leave</Button>
+            <Button Background="#FF100548" Foreground="#FF00A7FF" BorderBrush="#FF00FF79" DockPanel.Dock="Right" Padding="10,5" Margin="5" Name="Join_Button" Click="Join_Button_Click" Width="80">Join</Button>
+            <Button Background="#FF100548" Foreground="#FF00A7FF" BorderBrush="#FF00FF79" DockPanel.Dock="Right" Padding="10,5" Margin="5" Name="Send_Button" Click="Send_Button_Click" Width="90">Send</Button>
+            <TextBox TextWrapping="Wrap" AcceptsReturn="True"  HorizontalScrollBarVisibility="Disabled" Height="30" VerticalScrollBarVisibility="Auto" Margin="5" VerticalContentAlignment="Center" Name="msgTextBox" BorderBrush="#FF07112F" Foreground="#FF073248" SelectionTextBrush="#FF180B5B" Width="647" ></TextBox>
+        
         </DockPanel>
-        <TextBlock Background="OrangeRed" Foreground="Black" DockPanel.Dock="Top" TextAlignment="Center" FontSize="20" FontWeight="Bold">Salo Chat</TextBlock>
-        <ListBox  Background="Black" Foreground="OrangeRed" ItemsSource="{Binding}"></ListBox>
+        <TextBlock DockPanel.Dock="Top" TextAlignment="Left" FontSize="18" FontWeight="Bold" Padding="40,5,0,0" Background="#FF0B0A35" Height="32">
+            
+            <TextBlock Foreground="#FF0C8B8E" Background="{x:Null}" >GORDO CHAT EVERYONE</TextBlock>
+           <TextBlock Foreground="#FF0C8B8E" Margin="600,0,0,0">User name: </TextBlock> 
+           <TextBlock Name="NicknameTextBox" Foreground="#FF0C8B8E" Background="{x:Null}" />
+</TextBlock>
+        <ListBox   Foreground="#FF078E72" ItemsSource="{Binding}" FontFamily="Lucida Console" FontSize="15">
+            <ListBox.Background>
+                <ImageBrush ImageSource="./Images/chat_background.jpg" TileMode="None" Stretch="Fill"/>
+            </ListBox.Background>
+        </ListBox>
     </DockPanel>
-  
-    
-      
+
 
    
+
 </Window>

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ClientChat
@@ -31,6 +32,12 @@ namespace ClientChat
             {
                 OKButton_Click(sender, e);
             }
+        }
+
+      
+        private void nicknameTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
         }
     }
 }
