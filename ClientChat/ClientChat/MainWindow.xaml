@@ -17,7 +17,7 @@
             <Button Background="#FF100548" Foreground="#FF00A7FF" BorderBrush="#FF00FF79" DockPanel.Dock="Right" Padding="10,5" Margin="5" Name="Leave_Button" Click="Leave_Button_Click" Width="60">Leave</Button>
             <Button Background="#FF100548" Foreground="#FF00A7FF" BorderBrush="#FF00FF79" DockPanel.Dock="Right" Padding="10,5" Margin="5" Name="Join_Button" Click="Join_Button_Click" Width="80">Join</Button>
             <Button Background="#FF100548" Foreground="#FF00A7FF" BorderBrush="#FF00FF79" DockPanel.Dock="Right" Padding="10,5" Margin="5" Name="Send_Button" Click="Send_Button_Click" Width="90">Send</Button>
-            <TextBox TextWrapping="Wrap" AcceptsReturn="True"  HorizontalScrollBarVisibility="Disabled" Height="30" VerticalScrollBarVisibility="Auto" Margin="5" VerticalContentAlignment="Center" Name="msgTextBox" BorderBrush="#FF07112F" Foreground="#FF073248" SelectionTextBrush="#FF180B5B" Width="647" ></TextBox>
+            <TextBox TextWrapping="Wrap" AcceptsReturn="False"  HorizontalScrollBarVisibility="Disabled" Height="30" VerticalScrollBarVisibility="Auto" Margin="5" VerticalContentAlignment="Center" KeyDown="msgTextBox_KeyDown" Name="msgTextBox" BorderBrush="#FF07112F" Foreground="#FF073248" SelectionTextBrush="#FF180B5B" Width="644" ></TextBox>
         
         </DockPanel>
         <TextBlock DockPanel.Dock="Top" TextAlignment="Left" FontSize="18" FontWeight="Bold" Padding="40,5,0,0" Background="#FF0B0A35" Height="32">

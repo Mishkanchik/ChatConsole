@@ -84,7 +84,7 @@ namespace ClientChat
             int index = 50;
             while (index < formattedText.Length)
             {
-                formattedText.Insert(index, "\n\n");
+                formattedText.Insert(index, "\n     ");
                 index += 51;
             }
 
@@ -107,6 +107,36 @@ namespace ClientChat
                 messages.Add(new MessageInfo(message, DateTime.Now));
             }
         }
+        private void msgTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter && Keyboard.Modifiers == ModifierKeys.Shift)
+            {
+                
+                int caretIndex = msgTextBox.CaretIndex;
+
+                
+                msgTextBox.Text = msgTextBox.Text.Insert(caretIndex, "\n      "); 
+
+               
+                msgTextBox.CaretIndex = caretIndex + 6; 
+
+                
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Enter)
+            {
+                
+                Send_Button_Click(sender, e);
+                e.Handled = true; 
+            }
+        }
+
+
+
+
+
+
+
 
 
         private void LeaveCheck()
